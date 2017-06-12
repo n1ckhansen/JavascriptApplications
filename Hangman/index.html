@@ -1,0 +1,97 @@
+<html>
+	<head>
+		<title>Hangman!</title>
+		<style type="text/css">
+			#guessedBox {
+				width:49%;
+				float:right;
+			}
+			#hangmanBox {
+				width:49%;
+				float:left;
+				text-align:center;
+			}
+			#puzzleBox {
+				clear:both;
+			}
+			#puzzleBox h2 {
+				text-align:center;
+			}
+			#puzzleBox ul {
+				margin-bottom:25px;
+			}
+			#bottomSpacer {
+				margin-bottom:100px;
+			}
+			.unguessed {
+				color:#888;
+				background-color:#ddd;
+				border: 1px solid #000;
+			}
+			.unrevealed {
+				color:#ddd;
+				background-color:#ddd;
+				border: 1px solid #000;
+			}
+			.guessed {
+				background-color:#fff;
+				border:1px solid #fff;
+			}
+			.letter {
+				font-size:2.5em;
+			}
+			li.letter {
+				float:left;
+				list-style-type:none;
+				margin-right:10px;
+				margin-bottom:2px;
+				width:1.5em;
+				text-align:center;
+			}
+		</style>
+		<script type="text/javascript" lang="javascript" src="hangman.js"></script>
+	</head>
+	<body onload="javascript:setUpGame();">
+		<h1>Hangman!</h1>
+		<div id="hangmanBox">
+			<img id="executioner" src="hangman0.png" />
+		</div> <!-- #hangmanBox -->
+		<div id="guessedBox">
+			<p>
+				<ul>
+					<li id="aGuess" class="letter unguessed">A</li>
+					<li id="bGuess" class="letter unguessed">B</li>
+					<li id="cGuess" class="letter unguessed">C</li>
+					<li id="dGuess" class="letter unguessed">D</li>
+					<li id="eGuess" class="letter unguessed">E</li>
+					<li id="fGuess" class="letter unguessed">F</li>
+					<li id="gGuess" class="letter unguessed">G</li>
+					<li id="hGuess" class="letter unguessed">H</li>
+					<li id="iGuess" class="letter unguessed">I</li>
+					<li id="jGuess" class="letter unguessed">J</li>
+					<li id="kGuess" class="letter unguessed">K</li>
+					<li id="lGuess" class="letter unguessed">L</li>
+					<li id="mGuess" class="letter unguessed">M</li>
+					<li id="nGuess" class="letter unguessed">N</li>
+					<li id="oGuess" class="letter unguessed">O</li>
+					<li id="pGuess" class="letter unguessed">P</li>
+					<li id="qGuess" class="letter unguessed">Q</li>
+					<li id="rGuess" class="letter unguessed">R</li>
+					<li id="sGuess" class="letter unguessed">S</li>
+					<li id="tGuess" class="letter unguessed">T</li>
+					<li id="uGuess" class="letter unguessed">U</li>
+					<li id="vGuess" class="letter unguessed">V</li>
+					<li id="wGuess" class="letter unguessed">W</li>
+					<li id="xGuess" class="letter unguessed">X</li>
+					<li id="yGuess" class="letter unguessed">Y</li>
+					<li id="zGuess" class="letter unguessed">Z</li>
+				</ul>
+			</p>
+		</div> <!-- #guessedBox -->
+		<div id="puzzleBox">
+			<h2 id="category">Your category is </h2>
+			<ul id="puzzleWords" />
+		</div> <!-- #puzzleBox -->
+		<div id="bottomSpacer" />
+	</body>
+</html>
