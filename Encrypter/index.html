@@ -1,0 +1,18 @@
+<html>
+	<head>
+		<title>Encrypter</title>
+		<script type="text/javascript" lang="javascript" src="encrypter.js"></script>
+	</head>
+	<body onload="javascript:setUp();">
+            <form id="appFormEncrypt" action="javascript:processEncryptForm()">
+                <input id="rawText" type="text" value="encrypt this" />
+                <input name="submit" type="submit" value="Encrypt!" />
+            </form>
+            <form id="appFormDecrypt" action="javascript:processDecryptForm()">
+		<input id="encryptedText" type="text" value="" />
+                <input name="submit" type="submit" value="Decrypt!" />
+            </form>
+            <p id="result" />
+
+	</body>
+<html>
