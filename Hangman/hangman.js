@@ -3,6 +3,7 @@ var wrongGuesses = 0;
 var puzzle = "You're Hung!".split("");
 var puzzleCategory = "Exclamation";
 function setUpGame() {
+	getPuzzle();
 	toggleAllGuesses( "unguessed" );
 	for( i=0; i < alphabet.length; i++ ) {
 		document.getElementById( alphabet[ i ] + "Guess" ).onclick = guessPress;
@@ -27,13 +28,34 @@ function setUpGame() {
 }
 
 function guessPress( evt ) {
+	if( puzzleIsSolved() || wrongGuesses >= 10 )
+		return;
 	if( evt.currentTarget.classList.contains( "unguessed" ) ) {
 		processGuess( evt );
 		evt.currentTarget.classList.remove( "unguessed" );
 		evt.currentTarget.classList.add( "guessed" );
 	}
-	//TODO: check on victory/defeat condition and act appropriately if so
+	if( puzzleIsSolved() ) {
+		alert( "you won!  Reload page to play again." );
+		toggleAllGuesses( "guessed" );
+	}
+	else if( wrongGuesses == 10 ) {
+		alert( "you lost! Reload page to play again." );
+		toggleAllGuesses( "guessed" );
+	}
 }
+
+function puzzleIsSolved() {
+	var isSolved = true;
+	for( i=0; i < puzzle.length; i++ ) {
+		var classList = document.getElementById( "puzzleCharacter" + i ).classList;
+		if( document.getElementById( "puzzleCharacter" + i ).classList.contains( "unrevealed" ) ) {
+			isSolved = false;
+			break;
+		}
+	}
+	return isSolved;
+}	
 
 function isALetter( letter ) {
 	for( j=0; j< alphabet.length; j++ ) {
@@ -85,9 +107,17 @@ function processGuess( evt ) {
 		var green = 255 - 255 * wrongGuesses / 10;
 		var blue = 255 - 255 * wrongGuesses / 10;
 		document.getElementById( "hangmanBox" ).style.backgroundColor = "rgb(" + red + "," + green + "," + blue + ")";
-		// TODO:  put this in the defeat block in the determination of victory/loss function
-		if( wrongGuesses == 10 ) {
-			toggleAllGuesses( "guessed" );
-		}
 	}
+}
+
+function getPuzzle() {
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open( "GET", "puzzles.json", false );
+	xmlhttp.overrideMimeType( "application/json" );
+	xmlhttp.send();
+	if( xmlhttp.status != 200 )
+		alert( "Error retrieving puzzles" );
+	puzzleJson = JSON.parse( xmlhttp.responseText );
+	alert( puzzleJson[ 1 ] );
+	
 }
