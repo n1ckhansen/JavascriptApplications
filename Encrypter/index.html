@@ -4,6 +4,8 @@
 		<script type="text/javascript" lang="javascript" src="encrypter.js"></script>
 	</head>
 	<body onload="javascript:setUp();">
+		<input id="saltText" type="text" /> 
+		<label>Encryption Salt</label><br /><br />
             <form id="appFormEncrypt" action="javascript:processEncryptForm()">
                 <input id="rawText" type="text" value="encrypt this" />
                 <input name="submit" type="submit" value="Encrypt!" />
