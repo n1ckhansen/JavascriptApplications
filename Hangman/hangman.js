@@ -118,6 +118,12 @@ function getPuzzle() {
 	if( xmlhttp.status != 200 )
 		alert( "Error retrieving puzzles" );
 	puzzleJson = JSON.parse( xmlhttp.responseText );
-	alert( puzzleJson[ 1 ] );
-	
+	thisPuzzleJson =  puzzleJson[ getRandomIntFromRange( 0, puzzleJson.length ) ];
+	puzzleCategory = Object.keys( thisPuzzleJson )[0];
+	puzzle = thisPuzzleJson[ puzzleCategory ];
+}
+
+/* includes min, excludes max */
+function getRandomIntFromRange( min, max ) {
+	return Math.floor( Math.random() * ( max - min ) ) + min;
 }
